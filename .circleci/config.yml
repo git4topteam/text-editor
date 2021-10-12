@@ -10,9 +10,7 @@ jobs:
       - image: docker4topteam/topteam.ci.environment:img4topteam.1
     steps:
       - checkout
-      - run: cd src
-      - run: cmake .
-      - run: make
+      - run: cd src && cmake . && make
       
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
