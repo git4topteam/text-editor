@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
         aboutdialog.h
         aboutdialog.cpp
         aboutdialog.ui
+        tabdocument.h
+        tabdocument.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

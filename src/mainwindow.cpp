@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
+#include "tabdocument.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,7 +19,23 @@ MainWindow::~MainWindow()
 
 void MainWindow::createUI()
 {
+    ui->tabPanel->clear();
+    //ui->tabPanel->setTabsClosable(true);
     //connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(slotExit()));
+}
+
+void MainWindow::slotNew()
+{
+    int index = ui->tabPanel->addTab(new TabDocument(), tr("New Document %1").arg(new_document_counter_++));
+    ui->tabPanel->setCurrentIndex(index);
+}
+
+void MainWindow::slotCloseTab(int index)
+{
+    TabDocument * tab = static_cast<TabDocument*>(ui->tabPanel->currentWidget());
+    disconnect(tab, nullptr, nullptr, nullptr);
+    tab->close();
+    delete tab;
 }
 
 void MainWindow::slotExit()

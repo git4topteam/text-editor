@@ -6,16 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>861</width>
+    <height>619</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
+  <widget class="QTabWidget" name="tabPanel">
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
+   </property>
+   <property name="documentMode">
+    <bool>false</bool>
+   </property>
+   <property name="tabsClosable">
+    <bool>true</bool>
+   </property>
+   <property name="movable">
+    <bool>true</bool>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -26,16 +35,6 @@
     <attribute name="title">
      <string>Tab 2</string>
     </attribute>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>201</width>
-       <height>131</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -43,11 +42,11 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>861</width>
      <height>20</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuTarget_1">
+   <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
@@ -57,8 +56,8 @@
      </property>
      <addaction name="actionClear"/>
     </widget>
-    <addaction name="actionTarget_1_1"/>
-    <addaction name="actionTarget_1_2"/>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
     <addaction name="menuOpen_Recent"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
@@ -115,19 +114,19 @@
     <addaction name="actionOpen_GitHub_project"/>
     <addaction name="actionAbout"/>
    </widget>
-   <addaction name="menuTarget_1"/>
+   <addaction name="menuFile"/>
    <addaction name="menuTarget_2"/>
    <addaction name="menuTarget_3"/>
    <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionTarget_1_1">
+  <action name="actionNew">
    <property name="text">
     <string>New</string>
    </property>
   </action>
-  <action name="actionTarget_1_2">
+  <action name="actionOpen">
    <property name="text">
     <string>Open</string>
    </property>
@@ -299,9 +298,43 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionNew</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotNew()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>430</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabPanel</sender>
+   <signal>tabCloseRequested(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotCloseTab(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>430</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>430</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slotExit()</slot>
   <slot>slotAbout()</slot>
+  <slot>slotNew()</slot>
+  <slot>slotCloseTab(int)</slot>
  </slots>
 </ui>
