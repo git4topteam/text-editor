@@ -15,12 +15,16 @@ public:
     ~MainWindow();
 
 private slots:
+    void slotNew();
     void slotExit();
     void slotAbout();
+
+    void slotCloseTab(int index);
 
 private:
     Ui::MainWindow *ui;
 
+    size_t new_document_counter_{1};
 private:
     void createUI();
 };
