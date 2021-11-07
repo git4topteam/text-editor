@@ -8,6 +8,9 @@ class TabDocument : public QWidget
 public:
     explicit TabDocument(QWidget *parent = nullptr);
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 signals:
 
 };
