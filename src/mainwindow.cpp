@@ -32,7 +32,7 @@ void MainWindow::slotNew()
 
 void MainWindow::slotCloseTab(int index)
 {
-    if (TabDocument * tab = static_cast<TabDocument*>(ui->tabPanel->widget(index)); tab->close()) {
+    if (auto * tab = ui->tabPanel->widget(index); tab->close()) {
         tab->deleteLater();
     }
 }
