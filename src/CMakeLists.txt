@@ -19,6 +19,15 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        aboutdialog.h
+        aboutdialog.cpp
+        aboutdialog.ui
+        file.h
+        file.cpp
+        filemanager.cpp
+        filemanager.h
+        textarea.cpp
+        textarea.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

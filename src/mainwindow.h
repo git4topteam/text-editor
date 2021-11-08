@@ -1,10 +1,7 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
+#pragma once
 #include <QMainWindow>
 #include "filemanager.h"
 #include "textarea.h"
-#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,20 +15,24 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void testLoadFile();
-    void testAddNewFile(); //типо новая вкладка
+private slots:
+    void on_actionTarget_1_2_triggered();
+    void closeTab(int index);
+
+    void slotAbout();
+    void slotNew();
+    void slotExit();
+
 protected:
-//   void resizeEvent(QResizeEvent *event) override;
-
-
-
+   void resizeEvent(QResizeEvent *event) override;
 private:
-    std::vector<TextArea*> m_textAreas; // у нас же будет много текстАрей, как в NotePad , предлагаю сделать, при нажатии на + , создавать еще одно окно с новым файлом. GRISHA KRASNOV
+    std::vector<TextArea*> m_textAreas;
     FileManager* m_fileManager;
     Ui::MainWindow *ui;
 
+    std::vector<int> m_counterNoNameDoc;
+    int getNumDoc();
  private:
-    void initTextArea(int index = 0);
-
+    void addTextArea(int index = 0);
 };
-#endif // MAINWINDOW_H
+

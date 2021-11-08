@@ -1,5 +1,4 @@
-#ifndef TEXTAREA_H
-#define TEXTAREA_H
+#pragma once
 #include <QObject>
 #include <QTextEdit>
 #include <QScrollBar>
@@ -10,30 +9,37 @@ class TextArea : public QTextEdit { // наследуемся, чтобы доб
     Q_OBJECT
 public:
     explicit TextArea(QWidget *wdg = nullptr);
+
+    // move оператор нужно реализовать и конструктор копирования?
+
+
     ~TextArea();
     void setFile(File* file);
+    bool fileIsAssigned();
 
 
 
 protected:
-   void resizeEvent(QResizeEvent *e) override;
-
+  void resizeEvent(QResizeEvent *e) override;
+  void closeEvent(QCloseEvent *event) override;
+ // void scrollContentsBy(int dx, int dy) override;
 
  private:
     File* m_file;
 
     int m_maxValueScrollBar;
 private:
-    void adaptScrollBar(File *file);
+    void adaptScrollBarBasedFile(File *file);
     void adaptScrollBar(int lines);
-    void adaptScrollBar(int lines,int sizeFile);
+    void adaptScrollBar(int lines, qint64 sizeFile);
     void setRangeScrollBar(int min,int max);
 
 
 
 private slots:
-    void updateText(const QString& text);
+    void test();
+    void updateText(const QString& text, int posScrollBar);
 
 
 };
-#endif // TEXTAREA_H
+

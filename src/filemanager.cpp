@@ -40,4 +40,13 @@ File *FileManager::getFile(int index)
     return m_openFiles.at(index);
 }
 
+void FileManager::closeFile(size_t index)
+{
+    if(index < m_openFiles.size()){
+      m_openFiles[index]->close();
+     delete m_openFiles[index];
+      m_openFiles.erase(m_openFiles.begin() + index);
+    }
+}
+
 
