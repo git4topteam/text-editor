@@ -27,7 +27,8 @@ int FileManager::openFile(const QString &path)
 
 int FileManager::saveFile(const QString &path)
 {
-
+  Q_UNUSED(path);
+ return 1;
 }
 
 File *FileManager::getFile(int index)

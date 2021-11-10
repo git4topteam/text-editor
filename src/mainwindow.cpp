@@ -36,6 +36,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
+    Q_UNUSED(event);
     //    for(auto& textArea : m_textAreas){
     //    textArea->resize(textArea->width(),textArea->height());
     //    }
