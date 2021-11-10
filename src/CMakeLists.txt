@@ -50,12 +50,19 @@ else()
 endif()
 
 target_link_libraries(Text-Editor PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+if (UNIX)
+    target_link_libraries(Text-Editor PUBLIC "-pthread")
+endif (UNIX)
 
 set_target_properties(Text-Editor PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
+
+if(UNIX)
+  target_compile_options(Text-Editor PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(Text-Editor)
