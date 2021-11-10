@@ -64,6 +64,8 @@ if(UNIX)
   target_compile_options(Text-Editor PRIVATE -Wall -Wextra -Wpedantic -Werror)
 endif()
 
+target_compile_features(Text-Editor PRIVATE cxx_std_17)
+
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(Text-Editor)
 endif()
