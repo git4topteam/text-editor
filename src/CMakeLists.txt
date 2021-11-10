@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(Text-Editor VERSION 0.1 LANGUAGES CXX)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)
@@ -54,6 +54,9 @@ else()
 endif()
 
 target_link_libraries(Text-Editor PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+if (UNIX)
+    target_link_libraries(Text-Editor PUBLIC "-pthread")
+endif (UNIX)
 
 set_target_properties(Text-Editor PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
