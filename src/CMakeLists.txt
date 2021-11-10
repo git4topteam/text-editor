@@ -65,7 +65,7 @@ set_target_properties(Text-Editor PROPERTIES
 )
 
 if(UNIX)
-  target_compile_options(Text-Editor -Wall -Wextra -Wpedantic -Werror)
+  target_compile_options(Text-Editor PRIVATE -Wall -Wextra -Wpedantic -Werror)
 endif()
 
 if(QT_VERSION_MAJOR EQUAL 6)
